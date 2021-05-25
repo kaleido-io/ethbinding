@@ -1,4 +1,4 @@
-module github.com/kaleido-io/ethbind
+module github.com/kaleido-io/ethbinding
 
 go 1.16
 

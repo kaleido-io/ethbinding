@@ -1,2 +1,2 @@
-# ethbind
-Dependency definitions for ethconnect and impl based on go-ethereum
+# ethbinding
+Dependency definitions for ethconnect and implementation based on go-ethereum
