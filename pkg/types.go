@@ -77,8 +77,8 @@ type Solidity = compiler.Solidity
 
 type ClientSubscription = rpc.ClientSubscription
 
-// Client is a connection to an RPC server
-type Client = rpc.Client
+// RPCClient is a connection to an RPC server
+type RPCClient = rpc.Client
 
 type Transaction = types.Transaction
 

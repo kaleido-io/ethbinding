@@ -55,7 +55,7 @@ type EthAPI interface {
 	JSON(reader io.Reader) (abi.ABI, error)
 	SolidityVersion(solc string) (*Solidity, error)
 	ParseCombinedJSON(combinedJSON []byte, source string, languageVersion string, compilerVersion string, compilerOptions string) (map[string]*Contract, error)
-	Dial(rawurl string) (*Client, error)
+	Dial(rawurl string) (*RPCClient, error)
 	NewMethod(name string, rawName string, funType ABIFunctionType, mutability string, isConst, isPayable bool, inputs ABIArguments, outputs ABIArguments) ABIMethod
 	NewTransaction(nonce uint64, to common.Address, amount *big.Int, gasLimit uint64, gasPrice *big.Int, data []byte) *Transaction
 	NewContractCreation(nonce uint64, amount *big.Int, gasLimit uint64, gasPrice *big.Int, data []byte) *Transaction
@@ -211,7 +211,7 @@ func (e *ethAPIShim) ParseCombinedJSON(combinedJSON []byte, source string, langu
 	return compiler.ParseCombinedJSON(combinedJSON, source, languageVersion, compilerVersion, compilerOptions)
 }
 
-func (e *ethAPIShim) Dial(rawurl string) (*Client, error) {
+func (e *ethAPIShim) Dial(rawurl string) (*RPCClient, error) {
 	return rpc.Dial(rawurl)
 }
 
