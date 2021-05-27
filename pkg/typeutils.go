@@ -44,7 +44,6 @@ type EthAPI interface {
 	HexToHash(hex string) Hash
 	EncodeBig(bigint *big.Int) string
 	FromHex(hex string) []byte
-	ToHex(b []byte) string
 	ABITypeFor(typeName string) (ABIType, error)
 	ABITypeKnown(typeName string) ABIType
 	NewType(typeName string, internalType string) (typ abi.Type, err error)
@@ -112,11 +111,6 @@ func (e *ethAPIShim) EncodeBig(bigint *big.Int) string {
 // FromHex returns the bytes represented by the hexadecimal string s
 func (e *ethAPIShim) FromHex(hex string) []byte {
 	return common.FromHex(hex)
-}
-
-// ToHex returns the hex representation of b, prefixed with '0x'. For empty slices, the return value is "0x0"
-func (e *ethAPIShim) ToHex(b []byte) string {
-	return common.ToHex(b)
 }
 
 // ABITypeFor gives you a type for a string
