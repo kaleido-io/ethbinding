@@ -3,14 +3,14 @@ BINARY_NAME=chainwall
 GOFILES := $(shell find . -name '*.go' -print)
 .DELETE_ON_ERROR:
 
-all: build test
+all: ethbinding.so
 test: deps lint
 		$(VGO) test  ./... -cover -coverprofile=coverage.txt -covermode=atomic
 coverage.html:
 		$(VGO) tool cover -html=coverage.txt
 coverage: test coverage.html
-ethbinding.so: ${GOFILES}
-		go build -o ethbinding.so -buildmode=plugin -tags=prod -v
+ethbinding.so: ${GOFILES} test
+		go build -trimpath -o ethbinding.so -buildmode=plugin -tags=prod -v
 lint:
 		$(shell go list -f '{{.Target}}' github.com/golangci/golangci-lint/cmd/golangci-lint) run
 build: ethbinding.so
