@@ -86,7 +86,7 @@ func (e *ethAPIShim) HexDecode(hex string) ([]byte, error) {
 
 // HexToAddress convert hex to an address
 func (e *ethAPIShim) HexToAddress(hex string) Address {
-	var addr Address = common.HexToAddress(hex)
+	addr := common.HexToAddress(hex)
 	return addr
 }
 
@@ -101,7 +101,7 @@ func (e *ethAPIShim) IsHexAddress(s string) bool {
 
 // HexToHash convert hex to an address
 func (e *ethAPIShim) HexToHash(hex string) Hash {
-	var hash Hash = common.HexToHash(hex)
+	hash := common.HexToHash(hex)
 	return hash
 }
 
