@@ -54,7 +54,6 @@ type EthAPI interface {
 	ABIElementMarshalingToABIEvent(marshalable *ABIElementMarshaling) (event *ABIEvent, err error)
 	ABIElementMarshalingToABIMethod(m *ABIElementMarshaling) (method *ABIMethod, err error)
 	JSON(reader io.Reader) (abi.ABI, error)
-	SolidityVersion(solc string) (*Solidity, error)
 	ParseCombinedJSON(combinedJSON []byte, source string, languageVersion string, compilerVersion string, compilerOptions string) (map[string]*Contract, error)
 	Dial(rawurl string) (*RPCClient, error)
 	NewMethod(name string, rawName string, funType ABIFunctionType, mutability string, isConst, isPayable bool, inputs ABIArguments, outputs ABIArguments) ABIMethod
@@ -207,10 +206,6 @@ func (e *ethAPIShim) ABIElementMarshalingToABIMethod(m *ABIElementMarshaling) (m
 // JSON returns a parsed ABI interface and error if it failed
 func (e *ethAPIShim) JSON(reader io.Reader) (abi.ABI, error) {
 	return abi.JSON(reader)
-}
-
-func (e *ethAPIShim) SolidityVersion(solc string) (*Solidity, error) {
-	return compiler.SolidityVersion(solc)
 }
 
 func (e *ethAPIShim) ParseCombinedJSON(combinedJSON []byte, source string, languageVersion string, compilerVersion string, compilerOptions string) (map[string]*Contract, error) {
