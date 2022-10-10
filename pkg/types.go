@@ -72,9 +72,6 @@ type Contract = compiler.Contract
 // ContractInfo contains metadata about a EVM compiled contract
 type ContractInfo = compiler.ContractInfo
 
-// Solidity contains information about the Solidity compiler
-type Solidity = compiler.Solidity
-
 type ClientSubscription = rpc.ClientSubscription
 
 // RPCClient is a connection to an RPC server

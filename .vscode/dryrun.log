@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/pbroadhurst/dev/firefly/ethbinding'
+go  get
+go  install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+GOGC=20 /Users/pbroadhurst/go/bin/golangci-lint run -v --timeout 5m
+go  test  ./... -cover -coverprofile=coverage.txt -covermode=atomic
+go build -trimpath -o ethbinding.so -buildmode=plugin -tags=prod -v
+make: Leaving directory `/Users/pbroadhurst/dev/firefly/ethbinding'
+ 

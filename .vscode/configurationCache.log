@@ -1,0 +1,1 @@
+{"buildTargets":[".DELETE_ON_ERROR","/Users/pbroadhurst/go/bin/golangci-lint","all","build","clean","coverage","coverage.html","deps","ethbinding.so","go-mod-tidy","lint","test"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
