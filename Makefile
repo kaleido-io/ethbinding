@@ -5,7 +5,14 @@ GOBIN := $(shell $(VGO) env GOPATH)/bin
 LINT := $(GOBIN)/golangci-lint
 .DELETE_ON_ERROR:
 
-all: ethbinding.so
+all: govulncheck ethbinding.so
+# govulncheck
+GOVULNCHECK := $(GOBIN)/govulncheck
+.PHONY: govulncheck
+govulncheck: ${GOVULNCHECK}
+	./govulnchecktool.sh
+${GOVULNCHECK}:
+	${VGO} install golang.org/x/vuln/cmd/govulncheck@latest
 test: deps lint
 		$(VGO) test  ./... -cover -coverprofile=coverage.txt -covermode=atomic
 coverage.html:
