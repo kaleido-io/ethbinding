@@ -22,6 +22,6 @@ clean:
 deps:
 		$(VGO) get
 ${LINT}:
-		$(VGO) install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+		$(VGO) install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.55.2
 go-mod-tidy: .ALWAYS
 		$(VGO) mod tidy

@@ -18,7 +18,7 @@ package ethbinding
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
@@ -68,7 +68,7 @@ func TestRABIMarshalingToABIRuntime(t *testing.T) {
 	assert := assert.New(t)
 
 	var marshalableABI ABIMarshaling
-	b, err := ioutil.ReadFile("../test/abicoderv2_example.abi.json")
+	b, err := os.ReadFile("../test/abicoderv2_example.abi.json")
 	assert.NoError(err)
 	err = json.Unmarshal(b, &marshalableABI)
 	assert.NoError(err)
@@ -82,7 +82,7 @@ func TestRABIMarshalingToABIRuntimeSimpleStorage(t *testing.T) {
 	assert := assert.New(t)
 
 	var marshalableABI ABIMarshaling
-	b, err := ioutil.ReadFile("../test/simplestorage.abi.json")
+	b, err := os.ReadFile("../test/simplestorage.abi.json")
 	assert.NoError(err)
 	err = json.Unmarshal(b, &marshalableABI)
 	assert.NoError(err)
